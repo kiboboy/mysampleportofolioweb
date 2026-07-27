@@ -1,0 +1,1744 @@
+<!doctype html>
+<html lang="id" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NOUFAL ARYSHA | WEBDEV - Portfolio</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- GSAP (Hanya versi gratis yang aman) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              navy: "#2F4156",
+              teal: "#567C8D",
+              skyblue: "#C8D9E6",
+              beige: "#F5EFEB",
+              white: "#FFFFFF",
+            },
+            fontFamily: {
+              sans: ["Inter", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap");
+      body {
+        font-family: "Inter", sans-serif;
+      }
+
+      :root {
+        --blob-shape-1: polygon(
+          30% 0%,
+          70% 0%,
+          100% 30%,
+          100% 70%,
+          70% 100%,
+          30% 100%,
+          0% 70%,
+          0% 30%
+        );
+        --blob-shape-2: polygon(
+          50% 0%,
+          90% 10%,
+          100% 50%,
+          90% 90%,
+          50% 100%,
+          10% 90%,
+          0% 50%,
+          10% 10%
+        );
+      }
+
+      /* Foto Blob Besar */
+      .portrait-blob {
+        clip-path: var(--blob-shape-1);
+        transition: clip-path 0.5s ease;
+      }
+
+      /* Warna Border Animasi */
+      .portrait-border {
+        position: relative;
+        padding: 10px;
+      }
+
+      .portrait-border::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: conic-gradient(
+          from 180deg,
+          #567c8d,
+          #c8d9e6,
+          #f5efeb,
+          #567c8d
+        );
+        animation: rotateBorder 6s linear infinite;
+        clip-path: inherit;
+        z-index: -1;
+      }
+
+      @keyframes rotateBorder {
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      .card-photo-blob {
+        clip-path: var(--blob-shape-2);
+      }
+
+      /* Elemen Dekorasi Abstrak */
+      .orb {
+        border-radius: 50%;
+        filter: blur(40px);
+        position: absolute;
+        opacity: 0.4;
+        z-index: 0;
+        pointer-events: none;
+      }
+
+      .hero-title-line {
+        overflow: hidden;
+        display: block;
+      }
+      /* Animasi Tech Stack (Bentuk Tidak Beraturan & Berubah Warna) */
+      @keyframes blob-morph-1 {
+        0%,
+        100% {
+          border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
+          transform: translateY(0px) rotate(-2deg);
+          background-color: rgba(100, 255, 218, 0.15); /* Soft Teal */
+        }
+        50% {
+          border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+          transform: translateY(-15px) rotate(3deg);
+          background-color: rgba(136, 146, 176, 0.2); /* Soft Skyblue */
+        }
+      }
+
+      @keyframes blob-morph-2 {
+        0%,
+        100% {
+          border-radius: 50% 50% 40% 60% / 55% 45% 55% 45%;
+          transform: translateY(0px) rotate(2deg);
+          background-color: rgba(136, 146, 176, 0.15); /* Soft Skyblue */
+        }
+        50% {
+          border-radius: 30% 70% 60% 40% / 40% 60% 40% 60%;
+          transform: translateY(-20px) rotate(-3deg);
+          background-color: rgba(10, 25, 47, 0.1); /* Soft Navy */
+        }
+      }
+
+      @keyframes blob-morph-3 {
+        0%,
+        100% {
+          border-radius: 40% 60% 50% 50% / 40% 50% 60% 50%;
+          transform: translateY(0px) rotate(0deg);
+          background-color: rgba(10, 25, 47, 0.1); /* Soft Navy */
+        }
+        50% {
+          border-radius: 60% 40% 60% 40% / 50% 60% 50% 60%;
+          transform: translateY(-25px) rotate(2deg);
+          background-color: rgba(100, 255, 218, 0.2); /* Soft Teal */
+        }
+      }
+
+      .blob-card-1 {
+        animation: blob-morph-1 8s ease-in-out infinite;
+      }
+      .blob-card-2 {
+        animation: blob-morph-2 7s ease-in-out infinite;
+      }
+      .blob-card-3 {
+        animation: blob-morph-3 9s ease-in-out infinite;
+      }
+    </style>
+  </head>
+  <body class="bg-beige text-navy font-sans antialiased overflow-x-hidden">
+    <!-- 1. SPLASH SCREEN LOADING -->
+    <div
+      id="splash-overlay"
+      class="fixed inset-0 bg-navy z-[100] flex flex-col items-center justify-center"
+    >
+      <div
+        class="text-beige text-3xl md:text-5xl font-extrabold flex items-center gap-3"
+      >
+        <span>NOUFAL ARYSHA |</span>
+        <div
+          class="relative overflow-hidden h-12 md:h-16 w-64 md:w-80 text-teal"
+        >
+          <div id="splash-professions" class="flex flex-col">
+            <span class="h-12 md:h-16 flex items-center">Front-End Dev</span>
+            <span class="h-12 md:h-16 flex items-center">UI Designer</span>
+            <span class="h-12 md:h-16 flex items-center">Creative Coder</span>
+            <span class="h-12 md:h-16 flex items-center text-skyblue"
+              >WEB DEV</span
+            >
+          </div>
+        </div>
+      </div>
+      <p
+        class="text-skyblue/60 mt-6 font-mono text-sm tracking-widest uppercase animate-pulse"
+      >
+        Memuat Portofolio...
+      </p>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main-content" class="opacity-0">
+      <!-- Navbar -->
+      <header
+        class="fixed top-0 left-0 w-full z-50 bg-beige/90 backdrop-blur-md border-b border-navy/10 h-20 flex items-center transition-colors duration-300"
+      >
+        <nav
+          class="max-w-7xl mx-auto w-full px-6 md:px-12 flex items-center justify-between"
+        >
+          <a
+            href="#"
+            class="text-navy text-xl md:text-2xl font-extrabold flex items-center gap-2 group nav-logo"
+          >
+            NOUFAL ARYSHA |
+            <span class="text-teal font-mono tracking-wider nav-tag"
+              >WEBDEV</span
+            >
+          </a>
+          <div
+            class="hidden md:flex items-center space-x-10 text-navy font-semibold nav-links"
+          >
+            <a href="#hero" class="hover:text-teal transition-colors">Home</a>
+            <a href="#about" class="hover:text-teal transition-colors">About</a>
+            <a href="#projects" class="hover:text-teal transition-colors"
+              >Projects</a
+            >
+            <a href="#contact" class="hover:text-teal transition-colors"
+              >Contact</a
+            >
+          </div>
+        </nav>
+      </header>
+
+      <!-- HERO SECTION (Beige) -->
+      <section
+        id="hero"
+        class="min-h-screen flex items-center justify-center relative pt-28 pb-20 bg-beige z-10 overflow-hidden"
+      >
+        <!-- Background Orbs (Tetap dipertahankan) -->
+        <div
+          class="orb w-64 h-64 bg-teal absolute -top-20 left-10 rounded-full blur-3xl opacity-20"
+        ></div>
+        <div
+          class="orb w-80 h-80 bg-skyblue absolute top-1/2 right-0 rounded-full blur-3xl opacity-20"
+        ></div>
+
+        <div
+          class="max-w-7xl w-full mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10"
+        >
+          <!-- KOLOM KIRI: Hero Text Berdasarkan Referensi Gambar -->
+          <div class="flex flex-col space-y-6 lg:space-y-8">
+            <!-- Status Available -->
+            <div
+              class="flex items-center space-x-3 text-sm tracking-widest text-teal font-mono anim-hero-item"
+            >
+              <span class="w-2 h-2 bg-teal rounded-full animate-pulse"></span>
+              <span class="uppercase font-bold">Available for work</span>
+            </div>
+
+            <!-- Judul Utama (Typografi Besar) -->
+            <div class="flex flex-col leading-[0.9] text-navy anim-hero-item">
+              <h1
+                class="text-6xl md:text-8xl lg:text-[90px] font-black tracking-tighter"
+              >
+                Frontend
+              </h1>
+              <!-- Menggunakan opacity untuk efek kontras pada kata kedua seperti di gambar -->
+              <h1
+                class="text-6xl md:text-8xl lg:text-[90px] font-black tracking-tighter opacity-40"
+              >
+                Developer
+              </h1>
+            </div>
+
+            <!-- Teks Sapaan & Deskripsi -->
+            <div class="space-y-4 anim-hero-item text-navy">
+              <p class="text-xl font-bold">Halo, Saya Noufal Arysha _</p>
+              <p
+                class="text-base md:text-lg opacity-80 max-w-md leading-relaxed font-medium"
+              >
+                Menciptakan website modern dengan tampilan clean, responsif, dan
+                elegan. Mengubah ide dan desain menjadi pengalaman digital yang
+                menarik serta berorientasi pada kenyamanan pengguna (UI/UX).
+              </p>
+            </div>
+
+            <!-- Tech Stack -->
+            <div
+              class="flex flex-wrap gap-5 text-sm font-mono text-teal font-bold anim-hero-item"
+            >
+              <span>PHP</span>
+              <span>HTML</span>
+              <span>CSS</span>
+              <span>Laravel</span>
+              <span>Tailwind</span>
+              <span>Database</span>
+              <span>WordPress</span>
+            </div>
+
+            <!-- Teks Navigasi Bawah (Pengganti Button) -->
+            <div
+              class="flex flex-col space-y-2 text-sm text-navy/60 pt-4 font-mono font-medium anim-hero-item"
+            >
+              <a href="#projects" class="hover:text-teal transition-colors"
+                >&darr; explore my work below</a
+              >
+              <a href="#contact" class="hover:text-teal transition-colors"
+                >&#x2197; open to full-time & freelance opportunities</a
+              >
+            </div>
+          </div>
+
+          <!-- KOLOM KANAN: Hero Photo (Kodingan Foto Asli Anda Tetap Dipertahankan) -->
+          <div
+            class="flex justify-center lg:justify-end items-center relative anim-hero-photo"
+          >
+            <div
+              class="portrait-border w-[300px] h-[300px] md:w-[450px] md:h-[550px] overflow-hidden portrait-blob shadow-2xl bg-white"
+            >
+              <img
+                src="assets/img/noval.JPG.jpeg"
+                alt="Noufal Arysha"
+                class="w-full h-full object-cover bg-navy/10"
+                onerror="
+                  this.src =
+                    'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&auto=format&fit=crop&q=80'
+                "
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Style Animasi Melayang -->
+      <style>
+        @keyframes floatCard {
+          0% {
+            transform: translateY(0px) rotate(-2deg);
+          }
+          50% {
+            transform: translateY(-15px) rotate(1deg);
+          }
+          100% {
+            transform: translateY(0px) rotate(-2deg);
+          }
+        }
+        .animate-float-card {
+          animation: floatCard 6s ease-in-out infinite;
+        }
+      </style>
+
+      <!-- BACKGROUND BERUBAH JADI bg-navy -->
+      <section
+        id="about"
+        class="min-h-screen py-20 bg-navy relative z-10 flex items-center"
+      >
+        <div class="max-w-7xl w-full mx-auto px-6 md:px-12">
+          <!-- Bagian Utama: Layout 2 Kolom -->
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <!-- KOLOM KIRI: Foto Kartu Polaroid Melayang -->
+            <div
+              class="flex justify-center lg:justify-start items-center relative py-10 lg:py-0 order-2 lg:order-1"
+            >
+              <!-- Aksen Background Shadow -->
+              <div
+                class="absolute w-[280px] h-[380px] md:w-[320px] md:h-[420px] bg-teal/20 rounded-2xl rotate-6 blur-lg transition-all duration-500"
+              ></div>
+
+              <!-- Frame Utama Kartu Melayang (Tetap putih agar efek polaroid-nya nyata) -->
+              <div
+                class="animate-float-card relative w-[300px] h-[400px] md:w-[340px] md:h-[440px] bg-white p-4 rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.3)] border border-gray-100 flex flex-col z-10 group cursor-pointer"
+              >
+                <!-- Area Foto Profile -->
+                <div
+                  class="w-full h-[85%] relative rounded-xl overflow-hidden bg-navy/5"
+                >
+                  <img
+                    src="assets/img/noval.JPG.jpeg"
+                    alt="Noufal Arysha Ramadhan"
+                    class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 ease-in-out"
+                    onerror="
+                      this.src =
+                        'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&auto=format&fit=crop&q=80'
+                    "
+                  />
+                  <div
+                    class="absolute inset-0 bg-gradient-to-t from-navy/60 to-transparent opacity-60 group-hover:opacity-0 transition-opacity duration-500"
+                  ></div>
+                </div>
+
+                <!-- Detail Kartu Bagian Bawah (Teks tetap gelap karena background kartu putih) -->
+                <div
+                  class="h-[15%] w-full flex justify-between items-end pb-2 pt-4 px-2"
+                >
+                  <div class="flex flex-col">
+                    <span class="font-bold text-navy text-xl leading-none"
+                      >Noufal.dev</span
+                    >
+                    <span
+                      class="text-teal text-[10px] font-mono uppercase tracking-widest mt-1 font-bold"
+                      >Est. 2026</span
+                    >
+                  </div>
+
+                  <div
+                    class="flex space-x-1 opacity-20 group-hover:opacity-100 group-hover:text-teal transition-all duration-500"
+                  >
+                    <div class="w-1 h-6 bg-navy"></div>
+                    <div class="w-2 h-6 bg-navy"></div>
+                    <div class="w-1 h-6 bg-navy"></div>
+                    <div class="w-3 h-6 bg-navy"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- KOLOM KANAN: Teks & Tipografi About Me -->
+            <div class="flex flex-col space-y-6 order-1 lg:order-2">
+              <!-- Label Section -->
+              <span
+                class="text-teal font-mono text-sm tracking-widest uppercase font-bold"
+              >
+                About Me
+              </span>
+
+              <!-- Nama (Berubah jadi text-beige agar kontras dengan bg-navy) -->
+              <h2
+                class="text-5xl md:text-7xl font-black text-beige leading-none tracking-tighter"
+              >
+                Noufal Arysha
+                <span class="block mt-2">Ramadhan</span>
+              </h2>
+
+              <!-- Deskripsi (Berubah jadi text-beige/80) -->
+              <div
+                class="text-beige/80 text-base md:text-lg leading-relaxed font-medium space-y-4"
+              >
+                <p>
+                  Saya adalah lulusan Sarjana Sistem Informasi dari UIN Imam
+                  Bonjol Padang yang memiliki minat besar dan keahlian di bidang
+                  Web Development serta Technology Operations. Sebagai seorang
+                  Front-End Developer, saya terbiasa merancang dan
+                  mengimplementasikan antarmuka web yang responsif, adaptif,
+                  serta berorientasi pada kenyamanan pengguna. Berbekal
+                  pengalaman magang di instansi pemerintahan di bawah
+                  Kementerian Komdigi, saya berhasil mengasah kompetensi teknis
+                  sekaligus kemampuan manajemen proyek.
+                </p>
+                <p>
+                  Saya memiliki rekam jejak dalam mengoordinasikan operasional
+                  pelatihan teknologi, bertindak sebagai operator teknis,
+                  mengelola sistem administrasi digital, melakukan
+                  troubleshooting sistem, hingga menyusun dokumentasi kegiatan
+                  secara terstruktur. Kombinasi ini membentuk saya menjadi
+                  pribadi yang tidak hanya kuat dalam aspek teknis, tetapi juga
+                  adaptif, komunikatif, dan responsif dalam memecahkan masalah
+                  di situasi dinamis. Saya memiliki motivasi tinggi untuk terus
+                  berkembang dan siap mendedikasikan keterampilan serta etos
+                  kerja ini untuk memberikan kontribusi nyata dalam peluang
+                  karier profesional berikutnya.
+                </p>
+                <!-- Quote -->
+                <p
+                  class="italic text-teal border-l-4 border-teal pl-4 my-4 font-semibold"
+                >
+                  "Berbekal pengalaman teknis serta sertifikasi Junior Graphic
+                  Designer dari BNSP dan Networking Basics dari CISCO, saya siap
+                  mendedikasikan keterampilan ini untuk memberikan kontribusi
+                  nyata dalam lanskap teknologi."
+                </p>
+              </div>
+
+              <!-- Tombol Aksi (Disesuaikan warnanya untuk tema gelap) -->
+              <div class="flex flex-wrap gap-4 pt-4">
+                <a
+                  href="https://drive.google.com/file/d/1xEWS6tQVutlyod-RCPztiDpzLNBYI68g/view?usp=sharing"
+                  download="CV_Noufal_Arysha_Ramadhan.pdf"
+                  target="_blank"
+                  class="flex items-center gap-2 px-6 py-3 bg-teal text-white rounded-xl font-bold hover:bg-beige hover:text-navy transition-colors"
+                >
+                  <svg
+                    class="w-5 h-5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+                    ></path>
+                  </svg>
+                  Download CV
+                </a>
+                <a
+                  href="https://github.com/kiboboy"
+                  class="flex items-center gap-2 px-6 py-3 border-2 border-beige text-beige rounded-xl font-bold hover:bg-beige hover:text-navy transition-colors"
+                >
+                  <svg
+                    class="w-5 h-5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                    ></path>
+                  </svg>
+                  View Projects
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bagian Bawah: Kotak Statistik bergaya Transparan (Glassmorphism) -->
+          <div
+            class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16 pt-8 border-t border-beige/10"
+          >
+            <!-- Card 1 -->
+            <div
+              class="bg-white/5 border border-white/10 backdrop-blur-sm rounded-2xl p-6 flex items-center justify-between group hover:bg-white/10 transition-all"
+            >
+              <div class="flex flex-col">
+                <span
+                  class="text-beige/50 font-mono text-xs font-bold uppercase tracking-widest mb-1"
+                  >Projects</span
+                >
+                <span class="text-teal font-black text-3xl">05+</span>
+              </div>
+              <div
+                class="text-beige/20 group-hover:text-teal group-hover:translate-x-1 group-hover:-translate-y-1 transition-all"
+              >
+                <svg
+                  class="w-6 h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M17 8l4 4m0 0l-4 4m4-4H3"
+                  ></path>
+                </svg>
+              </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div
+              class="bg-white/5 border border-white/10 backdrop-blur-sm rounded-2xl p-6 flex items-center justify-between group hover:bg-white/10 transition-all"
+            >
+              <div class="flex flex-col">
+                <span
+                  class="text-beige/50 font-mono text-xs font-bold uppercase tracking-widest mb-1"
+                  >Certificates</span
+                >
+                <span class="text-teal font-black text-3xl">02</span>
+              </div>
+              <div
+                class="text-beige/20 group-hover:text-teal group-hover:translate-x-1 group-hover:-translate-y-1 transition-all"
+              >
+                <svg
+                  class="w-6 h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M17 8l4 4m0 0l-4 4m4-4H3"
+                  ></path>
+                </svg>
+              </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div
+              class="bg-white/5 border border-white/10 backdrop-blur-sm rounded-2xl p-6 flex items-center justify-between group hover:bg-white/10 transition-all"
+            >
+              <div class="flex flex-col">
+                <span
+                  class="text-beige/50 font-mono text-xs font-bold uppercase tracking-widest mb-1"
+                  >Completed Works</span
+                >
+                <span class="text-teal font-black text-3xl">Magang di BBPSDMP KOMINFO MEDAN</span>
+              </div>
+              <div
+                class="text-beige/20 group-hover:text-teal group-hover:translate-x-1 group-hover:-translate-y-1 transition-all"
+              >
+                <svg
+                  class="w-6 h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M17 8l4 4m0 0l-4 4m4-4H3"
+                  ></path>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= PORTFOLIO SHOWCASE SECTION (Beige) ================= -->
+      <section
+        id="portfolio"
+        class="min-h-screen py-24 bg-beige relative z-10 border-t border-navy/10"
+      >
+        <div
+          class="w-96 h-96 bg-skyblue absolute -top-20 left-0 opacity-50 rounded-full blur-3xl pointer-events-none"
+        ></div>
+
+        <div class="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
+          <div class="text-center max-w-2xl mx-auto mb-12 space-y-4">
+            <h2
+              class="text-5xl md:text-6xl font-black text-navy tracking-tight"
+            >
+              Portfolio Showcase
+            </h2>
+            <p class="text-navy/70 text-base md:text-lg font-medium">
+              Explore my journey through projects, certifications, and technical
+              expertise.
+            </p>
+          </div>
+
+          <!-- Tab Buttons -->
+          <div class="flex justify-center mb-16">
+            <div
+              class="inline-flex bg-navy/5 p-1.5 rounded-full border border-navy/10 backdrop-blur-sm"
+            >
+              <button
+                id="btn-projects"
+                onclick="switchTab('projects')"
+                class="tab-btn px-6 py-2.5 rounded-full text-sm font-bold bg-navy text-beige shadow-md transition-all"
+              >
+                Projects
+              </button>
+              <button
+                id="btn-certificates"
+                onclick="switchTab('certificates')"
+                class="tab-btn px-6 py-2.5 rounded-full text-sm font-bold text-navy/50 hover:text-navy hover:bg-navy/5 transition-all"
+              >
+                Certificates
+              </button>
+              <button
+                id="btn-techstack"
+                onclick="switchTab('techstack')"
+                class="tab-btn px-6 py-2.5 rounded-full text-sm font-bold text-navy/50 hover:text-navy hover:bg-navy/5 transition-all"
+              >
+                Tech Stack
+              </button>
+            </div>
+          </div>
+
+          <!-- Tab Content: Projects -->
+          <div id="projects" class="tab-content block">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <!-- Card 1 (Tautan ke project-1.html) -->
+              <a
+                href="project-1.html"
+                class="bg-white p-6 rounded-[24px] shadow-xl border border-navy/5 hover:-translate-y-2 hover:shadow-teal/20 transition-all duration-300 flex flex-col h-full group block"
+              >
+                <div
+                  class="h-48 md:h-56 bg-navy/5 rounded-xl overflow-hidden mb-6 relative"
+                >
+                  <img
+                    src="assets/img/project/K UI Dashboard Admin.png"
+                    alt="Project 1"
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div
+                    class="absolute inset-0 bg-navy/0 group-hover:bg-navy/10 transition-colors flex items-center justify-center"
+                  >
+                    <span
+                      class="bg-white text-navy px-4 py-2 rounded-full font-bold text-sm opacity-0 group-hover:opacity-100 transition-opacity shadow-lg"
+                      >Lihat Detail</span
+                    >
+                  </div>
+                </div>
+                <h3 class="text-2xl font-bold text-navy mb-3">
+                  Sistem Informasi Kepegawaian Berbasis Web
+                </h3>
+                <p class="text-navy/70 text-sm font-light mb-6 flex-grow">
+                  Sebuah Aplikasi Berbasis Web Yang Digunakan Untuk Mengelola
+                  Data Kepegawaian.
+                </p>
+                <div class="flex flex-wrap gap-2 pt-4 border-t border-navy/10">
+                  <span
+                    class="text-xs px-2 py-1 rounded bg-skyblue/30 text-navy font-mono font-bold"
+                    >PHP</span
+                  >
+                  <span
+                    class="text-xs px-2 py-1 rounded bg-skyblue/30 text-navy font-mono font-bold"
+                    >HTML</span
+                  >
+                  <span
+                    class="text-xs px-2 py-1 rounded bg-skyblue/30 text-navy font-mono font-bold"
+                    >CSS</span
+                  >
+                  <span
+                    class="text-xs px-2 py-1 rounded bg-skyblue/30 text-navy font-mono font-bold"
+                    >JavaScript</span
+                  >
+                  <span
+                    class="text-xs px-2 py-1 rounded bg-skyblue/30 text-navy font-mono font-bold"
+                    >MySQL</span
+                  >
+                  <span
+                    class="text-xs px-2 py-1 rounded bg-skyblue/30 text-navy font-mono font-bold"
+                    >Git</span
+                  >
+                </div>
+              </a>
+
+              <!-- Card 2 (Tautan ke project-2.html) -->
+              <a
+                href="project-2.html"
+                class="bg-white p-6 rounded-[24px] shadow-xl border border-navy/5 hover:-translate-y-2 hover:shadow-teal/20 transition-all duration-300 flex flex-col h-full group block"
+              >
+                <div
+                  class="h-48 md:h-56 bg-navy/5 rounded-xl overflow-hidden mb-6 relative"
+                >
+                  <img
+                    src="assets/img/project/Landing Page.png"
+                    alt="Project 2"
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div
+                    class="absolute inset-0 bg-navy/0 group-hover:bg-navy/10 transition-colors flex items-center justify-center"
+                  >
+                    <span
+                      class="bg-white text-navy px-4 py-2 rounded-full font-bold text-sm opacity-0 group-hover:opacity-100 transition-opacity shadow-lg"
+                      >Lihat Detail</span
+                    >
+                  </div>
+                </div>
+                <h3 class="text-2xl font-bold text-navy mb-3">
+                  Sistem Informasi Pelayanan Masyarakat
+                </h3>
+                <p class="text-navy/70 text-sm font-light mb-6 flex-grow">
+                  Sistem informasi yang dirancang untuk memudahkan masyarakat
+                  dalam mengakses layanan publik secara efisien.
+                </p>
+                <div class="flex flex-wrap gap-2 pt-4 border-t border-navy/10">
+                  <span
+                    class="text-xs px-2 py-1 rounded bg-skyblue/30 text-navy font-mono font-bold"
+                    >PHP</span
+                  >
+                  <span
+                    class="text-xs px-2 py-1 rounded bg-skyblue/30 text-navy font-mono font-bold"
+                    >HTML</span
+                  >
+                  <span
+                    class="text-xs px-2 py-1 rounded bg-skyblue/30 text-navy font-mono font-bold"
+                    >CSS</span
+                  >
+                  <span
+                    class="text-xs px-2 py-1 rounded bg-skyblue/30 text-navy font-mono font-bold"
+                    >JavaScript</span
+                  >
+                  <span
+                    class="text-xs px-2 py-1 rounded bg-skyblue/30 text-navy font-mono font-bold"
+                    >MySQL</span
+                  >
+                </div>
+              </a>
+
+              <!-- Card 3 (Tautan ke project-3.html) -->
+              <a
+                href="project-3.html"
+                class="bg-white p-6 rounded-[24px] shadow-xl border border-navy/5 hover:-translate-y-2 hover:shadow-teal/20 transition-all duration-300 flex flex-col h-full group block"
+              >
+                <div
+                  class="h-48 md:h-56 bg-navy/5 rounded-xl overflow-hidden mb-6 relative"
+                >
+                  <img
+                    src="assets/img/project/Screenshot (126).png"
+                    alt="Project 3"
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div
+                    class="absolute inset-0 bg-navy/0 group-hover:bg-navy/10 transition-colors flex items-center justify-center"
+                  >
+                    <span
+                      class="bg-white text-navy px-4 py-2 rounded-full font-bold text-sm opacity-0 group-hover:opacity-100 transition-opacity shadow-lg"
+                      >Lihat Detail</span
+                    >
+                  </div>
+                </div>
+                <h3 class="text-2xl font-bold text-navy mb-3">
+                  Sistem Informasi Rekrutmen Karyawan
+                </h3>
+                <p class="text-navy/70 text-sm font-light mb-6 flex-grow">
+                  Sistem informasi yang dirancang untuk memudahkan proses
+                  rekrutmen karyawan secara efisien.
+                </p>
+                <div class="flex flex-wrap gap-2 pt-4 border-t border-navy/10">
+                  <span
+                    class="text-xs px-2 py-1 rounded bg-skyblue/30 text-navy font-mono font-bold"
+                    >PHP</span
+                  >
+                  <span
+                    class="text-xs px-2 py-1 rounded bg-skyblue/30 text-navy font-mono font-bold"
+                    >HTML</span
+                  >
+                  <span
+                    class="text-xs px-2 py-1 rounded bg-skyblue/30 text-navy font-mono font-bold"
+                    >CSS</span
+                  >
+                  <span
+                    class="text-xs px-2 py-1 rounded bg-skyblue/30 text-navy font-mono font-bold"
+                    >JavaScript</span
+                  >
+                  <span
+                    class="text-xs px-2 py-1 rounded bg-skyblue/30 text-navy font-mono font-bold"
+                    >MySQL</span
+                  >
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <!-- TAB KONTEN: CERTIFICATES -->
+          <div id="tab-certificates" class="tab-content hidden">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <!-- Sertifikat 1: Junior Graphic Designer BNSP -->
+              <div
+                class="bg-white p-6 rounded-[24px] shadow-xl border border-navy/5 hover:-translate-y-2 hover:shadow-teal/20 transition-all duration-300 flex flex-col h-full group"
+              >
+                <!-- Area Gambar Sertifikat (Bisa Diklik) -->
+                <!-- PENTING: Ganti href dengan lokasi file PDF Anda -->
+                <a
+                  href="assets/img/VSGA1 (2).png"
+                  target="_blank"
+                  class="block w-full h-48 md:h-64 bg-navy/5 rounded-[16px] overflow-hidden mb-6 relative border border-navy/10"
+                >
+                  <!-- PENTING: Ganti src dengan gambar (JPG/PNG) sertifikat Anda -->
+                  <img
+                    src="assets/img/VSGA1 (2).png"
+                    alt="Sertifikat BNSP"
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    onerror="this.src = 'assets/img/VSGA1 (2).png'"
+                  />
+
+                  <!-- Overlay saat di-hover -->
+                  <div
+                    class="absolute inset-0 bg-navy/0 group-hover:bg-navy/30 transition-colors flex items-center justify-center backdrop-blur-[2px] opacity-0 group-hover:opacity-100"
+                  >
+                    <span
+                      class="bg-white text-navy px-5 py-2.5 rounded-full font-bold text-sm shadow-lg flex items-center gap-2"
+                    >
+                      <svg
+                        class="w-4 h-4"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                        ></path>
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+                        ></path>
+                      </svg>
+                      Lihat Dokumen
+                    </span>
+                  </div>
+                </a>
+
+                <!-- Detail Sertifikat -->
+                <div class="flex items-start justify-between mb-3">
+                  <h3 class="text-2xl font-black text-navy leading-tight">
+                    Junior Graphic Designer
+                  </h3>
+                  <span
+                    class="text-xs font-bold font-mono text-navy/50 bg-navy/5 px-3 py-1 rounded-full whitespace-nowrap"
+                    >Feb 2024</span
+                  >
+                </div>
+                <p class="text-navy/70 text-sm font-medium mb-6 flex-grow">
+                  Badan Nasional Sertifikasi Profesi (BNSP) - LSP Teknologi
+                  Digital
+                </p>
+                <div class="flex flex-wrap gap-2 pt-4 border-t border-navy/10">
+                  <span
+                    class="text-xs px-3 py-1.5 rounded-full bg-skyblue/30 text-navy font-mono font-bold"
+                    >Graphic Design</span
+                  >
+                  <span
+                    class="text-xs px-3 py-1.5 rounded-full bg-skyblue/30 text-navy font-mono font-bold"
+                    >BNSP</span
+                  >
+                </div>
+              </div>
+
+              <!-- Sertifikat 2: Pemasaran Digital Dasar Kominfo -->
+              <div
+                class="bg-white p-6 rounded-[24px] shadow-xl border border-navy/5 hover:-translate-y-2 hover:shadow-teal/20 transition-all duration-300 flex flex-col h-full group"
+              >
+                <!-- Area Gambar Sertifikat (Bisa Diklik) -->
+                <!-- PENTING: Ganti href dengan lokasi file PDF Anda -->
+                <a
+                  href="assets/img/DEA (2).png"
+                  target="_blank"
+                  class="block w-full h-48 md:h-64 bg-navy/5 rounded-[16px] overflow-hidden mb-6 relative border border-navy/10"
+                >
+                  <!-- PENTING: Ganti src dengan gambar (JPG/PNG) sertifikat Anda -->
+                  <img
+                    src="assets/img/DEA (2).png"
+                    alt="Sertifikat Digital Marketing"
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    onerror="this.src = 'assets/img/DEA (2).png'"
+                  />
+
+                  <!-- Overlay saat di-hover -->
+                  <div
+                    class="absolute inset-0 bg-navy/0 group-hover:bg-navy/30 transition-colors flex items-center justify-center backdrop-blur-[2px] opacity-0 group-hover:opacity-100"
+                  >
+                    <span
+                      class="bg-white text-navy px-5 py-2.5 rounded-full font-bold text-sm shadow-lg flex items-center gap-2"
+                    >
+                      <svg
+                        class="w-4 h-4"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                        ></path>
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+                        ></path>
+                      </svg>
+                      Lihat Dokumen
+                    </span>
+                  </div>
+                </a>
+
+                <!-- Detail Sertifikat -->
+                <div class="flex items-start justify-between mb-3">
+                  <h3 class="text-2xl font-black text-navy leading-tight">
+                    Pemasaran Digital Dasar
+                  </h3>
+                  <span
+                    class="text-xs font-bold font-mono text-navy/50 bg-navy/5 px-3 py-1 rounded-full whitespace-nowrap"
+                    >Jan 2024</span
+                  >
+                </div>
+                <p class="text-navy/70 text-sm font-medium mb-6 flex-grow">
+                  Digital Entrepreneurship Academy - Kementerian Kominfo
+                  (BBPSDMP Medan)
+                </p>
+                <div class="flex flex-wrap gap-2 pt-4 border-t border-navy/10">
+                  <span
+                    class="text-xs px-3 py-1.5 rounded-full bg-skyblue/30 text-navy font-mono font-bold"
+                    >Digital Marketing</span
+                  >
+                  <span
+                    class="text-xs px-3 py-1.5 rounded-full bg-skyblue/30 text-navy font-mono font-bold"
+                    >Kominfo</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB KONTEN: TECH STACK -->
+          <div id="tab-techstack" class="tab-content hidden py-10">
+            <!-- Container dengan Grid -->
+            <div
+              class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6 md:gap-10 px-2 md:px-8 place-items-center"
+            >
+              <!-- 1. Figma -->
+              <div
+                class="blob-card-1 w-32 h-32 md:w-40 md:h-40 flex flex-col items-center justify-center gap-3 md:-translate-y-6 shadow-lg shadow-teal/5 border border-white/50 backdrop-blur-sm cursor-pointer group"
+              >
+                <img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/figma/figma-original.svg"
+                  alt="Figma"
+                  class="w-10 h-10 md:w-14 md:h-14 group-hover:scale-125 transition-transform duration-300"
+                />
+                <span
+                  class="text-navy font-bold text-xs md:text-sm tracking-wide"
+                  >Figma</span
+                >
+              </div>
+
+              <!-- 2. Framer -->
+              <div
+                class="blob-card-2 w-32 h-32 md:w-40 md:h-40 flex flex-col items-center justify-center gap-3 md:translate-y-8 shadow-lg shadow-navy/5 border border-white/50 backdrop-blur-sm cursor-pointer group"
+              >
+                <!-- Menggunakan CDN SimpleIcons khusus untuk Framer -->
+                <img
+                  src="https://cdn.simpleicons.org/framer/0a192f"
+                  alt="Framer"
+                  class="w-10 h-10 md:w-14 md:h-14 group-hover:scale-125 transition-transform duration-300"
+                />
+                <span
+                  class="text-navy font-bold text-xs md:text-sm tracking-wide"
+                  >Framer</span
+                >
+              </div>
+
+              <!-- 3. Balsamiq (Ikon Wireframe/Desain) -->
+              <div
+                class="blob-card-3 w-32 h-32 md:w-40 md:h-40 flex flex-col items-center justify-center gap-3 md:-translate-y-8 shadow-lg shadow-skyblue/5 border border-white/50 backdrop-blur-sm cursor-pointer group"
+              >
+                <svg
+                  class="w-10 h-10 md:w-14 md:h-14 text-red-600 group-hover:scale-125 transition-transform duration-300"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M9.53 16.122a3 3 0 00-5.78 1.128 2.25 2.25 0 01-2.4 2.245 4.5 4.5 0 008.4-2.245c0-.399-.078-.78-.22-1.128zm0 0a15.998 15.998 0 003.388-1.62m-5.043-.025a15.994 15.994 0 011.622-3.395m3.42 3.42a15.995 15.995 0 004.764-4.648l3.876-5.814a1.151 1.151 0 00-1.597-1.597L14.146 6.32a15.996 15.996 0 00-4.649 4.763m3.42 3.42a6.776 6.776 0 00-3.42-3.42"
+                  ></path>
+                </svg>
+                <span
+                  class="text-navy font-bold text-xs md:text-sm tracking-wide"
+                  >Balsamiq</span
+                >
+              </div>
+
+              <!-- 4. HTML5 -->
+              <div
+                class="blob-card-1 w-32 h-32 md:w-40 md:h-40 flex flex-col items-center justify-center gap-3 md:translate-y-4 shadow-lg shadow-teal/5 border border-white/50 backdrop-blur-sm cursor-pointer group"
+              >
+                <img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg"
+                  alt="HTML5"
+                  class="w-10 h-10 md:w-14 md:h-14 group-hover:scale-125 transition-transform duration-300"
+                />
+                <span
+                  class="text-navy font-bold text-xs md:text-sm tracking-wide"
+                  >HTML5</span
+                >
+              </div>
+
+              <!-- 5. CSS3 -->
+              <div
+                class="blob-card-2 w-32 h-32 md:w-40 md:h-40 flex flex-col items-center justify-center gap-3 md:translate-y-12 shadow-lg shadow-navy/5 border border-white/50 backdrop-blur-sm cursor-pointer group"
+              >
+                <img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg"
+                  alt="CSS3"
+                  class="w-10 h-10 md:w-14 md:h-14 group-hover:scale-125 transition-transform duration-300"
+                />
+                <span
+                  class="text-navy font-bold text-xs md:text-sm tracking-wide"
+                  >CSS3</span
+                >
+              </div>
+
+              <!-- 6. JavaScript -->
+              <div
+                class="blob-card-3 w-32 h-32 md:w-40 md:h-40 flex flex-col items-center justify-center gap-3 md:-translate-y-4 shadow-lg shadow-skyblue/5 border border-white/50 backdrop-blur-sm cursor-pointer group"
+              >
+                <img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg"
+                  alt="JavaScript"
+                  class="w-10 h-10 md:w-14 md:h-14 group-hover:scale-125 transition-transform duration-300 rounded-lg"
+                />
+                <span
+                  class="text-navy font-bold text-xs md:text-sm tracking-wide"
+                  >JavaScript</span
+                >
+              </div>
+
+              <!-- 7. PHP -->
+              <div
+                class="blob-card-1 w-32 h-32 md:w-40 md:h-40 flex flex-col items-center justify-center gap-3 md:translate-y-16 shadow-lg shadow-teal/5 border border-white/50 backdrop-blur-sm cursor-pointer group"
+              >
+                <img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/php/php-original.svg"
+                  alt="PHP"
+                  class="w-10 h-10 md:w-14 md:h-14 group-hover:scale-125 transition-transform duration-300"
+                />
+                <span
+                  class="text-navy font-bold text-xs md:text-sm tracking-wide"
+                  >PHP</span
+                >
+              </div>
+
+              <!-- 8. MySQL -->
+              <div
+                class="blob-card-2 w-32 h-32 md:w-40 md:h-40 flex flex-col items-center justify-center gap-3 md:-translate-y-2 shadow-lg shadow-navy/5 border border-white/50 backdrop-blur-sm cursor-pointer group"
+              >
+                <img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg"
+                  alt="MySQL"
+                  class="w-10 h-10 md:w-14 md:h-14 group-hover:scale-125 transition-transform duration-300"
+                />
+                <span
+                  class="text-navy font-bold text-xs md:text-sm tracking-wide"
+                  >MySQL</span
+                >
+              </div>
+
+              <!-- 9. Laravel -->
+              <div
+                class="blob-card-3 w-32 h-32 md:w-40 md:h-40 flex flex-col items-center justify-center gap-3 md:-translate-y-12 shadow-lg shadow-skyblue/5 border border-white/50 backdrop-blur-sm cursor-pointer group"
+              >
+                <img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/laravel/laravel-original.svg"
+                  alt="Laravel"
+                  class="w-10 h-10 md:w-14 md:h-14 group-hover:scale-125 transition-transform duration-300"
+                />
+                <span
+                  class="text-navy font-bold text-xs md:text-sm tracking-wide"
+                  >Laravel</span
+                >
+              </div>
+
+              <!-- 10. Tailwind CSS -->
+              <div
+                class="blob-card-1 w-32 h-32 md:w-40 md:h-40 flex flex-col items-center justify-center gap-3 md:translate-y-6 shadow-lg shadow-teal/5 border border-white/50 backdrop-blur-sm cursor-pointer group"
+              >
+                <img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg"
+                  alt="Tailwind CSS"
+                  class="w-10 h-10 md:w-14 md:h-14 group-hover:scale-125 transition-transform duration-300"
+                />
+                <span
+                  class="text-navy font-bold text-xs md:text-sm tracking-wide"
+                  >Tailwind</span
+                >
+              </div>
+
+              <!-- 11. XAMPP (Ikon Server / Data Center) -->
+              <div
+                class="blob-card-2 w-32 h-32 md:w-40 md:h-40 flex flex-col items-center justify-center gap-3 md:-translate-y-6 shadow-lg shadow-navy/5 border border-white/50 backdrop-blur-sm cursor-pointer group"
+              >
+                <svg
+                  class="w-10 h-10 md:w-14 md:h-14 text-orange-500 group-hover:scale-125 transition-transform duration-300"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"
+                  ></path>
+                </svg>
+                <span
+                  class="text-navy font-bold text-xs md:text-sm tracking-wide"
+                  >XAMPP</span
+                >
+              </div>
+
+              <!-- 12. Database (Ikon Silinder Database Standar) -->
+              <div
+                class="blob-card-3 w-32 h-32 md:w-40 md:h-40 flex flex-col items-center justify-center gap-3 md:translate-y-8 shadow-lg shadow-skyblue/5 border border-white/50 backdrop-blur-sm cursor-pointer group"
+              >
+                <svg
+                  class="w-10 h-10 md:w-14 md:h-14 text-blue-500 group-hover:scale-125 transition-transform duration-300"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"
+                  ></path>
+                </svg>
+                <span
+                  class="text-navy font-bold text-xs md:text-sm tracking-wide"
+                  >Database</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Script Ganti Tab -->
+      <script>
+        function switchTab(tabId) {
+          document.querySelectorAll(".tab-content").forEach((content) => {
+            content.classList.add("hidden");
+            content.classList.remove("block");
+          });
+          const selectedContent = document.getElementById("tab-" + tabId);
+          selectedContent.classList.remove("hidden");
+          selectedContent.classList.add("block");
+
+          document.querySelectorAll(".tab-btn").forEach((btn) => {
+            btn.classList.remove("bg-navy", "text-beige", "shadow-md");
+            btn.classList.add(
+              "text-navy/50",
+              "hover:bg-navy/5",
+              "hover:text-navy",
+            );
+          });
+          const activeBtn = document.getElementById("btn-" + tabId);
+          activeBtn.classList.remove(
+            "text-navy/50",
+            "hover:bg-navy/5",
+            "hover:text-navy",
+          );
+          activeBtn.classList.add("bg-navy", "text-beige", "shadow-md");
+        }
+      </script>
+
+      <!-- ================= CONTACT & FOOTER SECTION (Navy) ================= -->
+      <section
+        id="contact"
+        class="py-24 bg-navy text-beige relative z-10 border-t border-skyblue/10"
+      >
+        <div class="max-w-7xl mx-auto px-6 md:px-12">
+          <!-- Header Section -->
+          <div class="mb-16 space-y-3">
+            <span
+              class="text-teal font-mono text-sm tracking-widest uppercase font-bold"
+              >Get In Touch</span
+            >
+            <h2 class="text-4xl md:text-6xl font-black tracking-tight">
+              Let's Connect & Collaborate.
+            </h2>
+          </div>
+
+          <!-- GRID UTAMA: 2 KOLOM (Kiri: Form WhatsApp & Sosmed, Kanan: Guestbook Comments) -->
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+            <!-- ================= KOLOM KIRI: FORM WHATSAPP & SOCIAL MEDIA ================= -->
+            <div class="flex flex-col space-y-8">
+              <!-- Form Send Message (Terhubung ke WhatsApp & Email) -->
+              <div
+                class="bg-white/5 border border-white/10 backdrop-blur-md p-8 rounded-[32px] shadow-xl space-y-6"
+              >
+                <h3 class="text-2xl font-bold text-beige">
+                  Send Message via WhatsApp
+                </h3>
+
+                <form
+                  id="whatsappForm"
+                  onsubmit="sendToWhatsApp(event)"
+                  class="space-y-4"
+                >
+                  <div>
+                    <label
+                      class="block text-xs font-mono uppercase tracking-widest text-skyblue mb-2"
+                      >Your Name</label
+                    >
+                    <input
+                      type="text"
+                      id="waName"
+                      placeholder="Nama Anda"
+                      required
+                      class="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-4 text-beige placeholder-skyblue/40 focus:outline-none focus:border-teal transition-colors"
+                    />
+                  </div>
+
+                  <div>
+                    <label
+                      class="block text-xs font-mono uppercase tracking-widest text-skyblue mb-2"
+                      >Your Message</label
+                    >
+                    <textarea
+                      id="waMessage"
+                      rows="4"
+                      placeholder="Tuliskan pesan..."
+                      class="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-4 text-beige placeholder-skyblue/40 focus:outline-none focus:border-teal transition-colors resize-none"
+                    >
+Halo, Saya Tertarik dengan portofolio anda, apakah anda ada waktu luang?</textarea
+                    >
+                  </div>
+
+                  <button
+                    type="submit"
+                    class="w-full py-4 bg-teal text-navy rounded-2xl font-bold text-base hover:bg-white transition-all shadow-lg shadow-teal/20 flex items-center justify-center gap-2"
+                  >
+                    <svg
+                      class="w-5 h-5"
+                      fill="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"
+                      />
+                    </svg>
+                    Send to WhatsApp (+62 857-6018-5595)
+                  </button>
+                </form>
+
+                <!-- Alternatif Kirim Email Langsung -->
+                <div class="pt-4 border-t border-white/10 text-center">
+                  <a
+                    href="mailto:noufalarysharmdn@gmail.com"
+                    class="text-xs font-mono text-skyblue hover:text-teal transition-colors"
+                  >
+                    Atau kirim email langsung ke:
+                    <span class="underline font-bold"
+                      >noufalarysharmdn@gmail.com</span
+                    >
+                  </a>
+                </div>
+              </div>
+
+              <!-- Connect With Me (Social Media Grid) -->
+              <div class="space-y-4">
+                <h4
+                  class="text-sm font-mono uppercase tracking-widest text-skyblue font-bold"
+                >
+                  Connect With Me
+                </h4>
+
+                <div class="grid grid-cols-2 gap-4">
+                  <!-- LinkedIn -->
+                  <a
+                    href="#"
+                    target="_blank"
+                    class="bg-white/5 border border-white/10 p-4 rounded-2xl flex items-center gap-3 hover:bg-white/10 hover:border-teal/50 transition-all group"
+                  >
+                    <span
+                      class="p-2 bg-white/5 rounded-xl text-teal group-hover:scale-110 transition-transform"
+                    >
+                      <svg
+                        class="w-5 h-5"
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"
+                        />
+                      </svg>
+                    </span>
+                    <div class="flex flex-col">
+                      <span class="font-bold text-sm text-beige">LinkedIn</span>
+                      <span class="text-xs text-skyblue">@noufal-arysha</span>
+                    </div>
+                  </a>
+
+                  <!-- GitHub -->
+                  <a
+                    href="https://github.com/kiboboy"
+                    target="_blank"
+                    class="bg-white/5 border border-white/10 p-4 rounded-2xl flex items-center gap-3 hover:bg-white/10 hover:border-teal/50 transition-all group"
+                  >
+                    <span
+                      class="p-2 bg-white/5 rounded-xl text-teal group-hover:scale-110 transition-transform"
+                    >
+                      <svg
+                        class="w-5 h-5"
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          clip-rule="evenodd"
+                          d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.379.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.161 22 16.418 22 12c0-5.523-4.477-10-10-10z"
+                        />
+                      </svg>
+                    </span>
+                    <div class="flex flex-col">
+                      <span class="font-bold text-sm text-beige">Github</span>
+                      <span class="text-xs text-skyblue">@kiboboy</span>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- ================= KOLOM KANAN: GUESTBOOK & COMMENTS ================= -->
+            <div class="flex flex-col space-y-6">
+              <!-- Box Input Komentar Interaktif -->
+              <div
+                class="bg-white/5 border border-white/10 backdrop-blur-md p-8 rounded-[32px] shadow-xl space-y-6"
+              >
+                <h3 class="text-2xl font-bold text-beige">Leave a Comment</h3>
+
+                <form
+                  id="commentForm"
+                  onsubmit="postComment(event)"
+                  class="space-y-4"
+                >
+                  <div>
+                    <label
+                      class="block text-xs font-mono uppercase tracking-widest text-skyblue mb-2"
+                      >Your Name</label
+                    >
+                    <input
+                      type="text"
+                      id="commentName"
+                      placeholder="Nama Anda"
+                      required
+                      class="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-4 text-beige placeholder-skyblue/40 focus:outline-none focus:border-teal transition-colors"
+                    />
+                  </div>
+
+                  <div>
+                    <label
+                      class="block text-xs font-mono uppercase tracking-widest text-skyblue mb-2"
+                      >Your Comment</label
+                    >
+                    <textarea
+                      id="commentText"
+                      rows="3"
+                      placeholder="Tinggalkan pesan atau kesan..."
+                      required
+                      class="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-4 text-beige placeholder-skyblue/40 focus:outline-none focus:border-teal transition-colors resize-none"
+                    ></textarea>
+                  </div>
+
+                  <button
+                    type="submit"
+                    class="w-full py-4 bg-white/10 text-beige rounded-2xl font-bold text-base hover:bg-teal hover:text-navy transition-all shadow-md"
+                  >
+                    Post Comment
+                  </button>
+                </form>
+              </div>
+
+              <!-- Daftar Komentar (Akan bertambah secara dinamis saat di-submit) -->
+              <div id="commentsList" class="space-y-4">
+                <!-- Komentar 1 (Pinned) -->
+                <div
+                  class="bg-white/5 border border-teal/30 backdrop-blur-md p-5 rounded-2xl flex items-center justify-between"
+                >
+                  <div class="flex items-center gap-4">
+                    <div
+                      class="w-10 h-10 rounded-full bg-teal text-navy font-bold flex items-center justify-center flex-shrink-0"
+                    >
+                      N
+                    </div>
+                    <div>
+                      <div class="flex items-center gap-2">
+                        <span class="font-bold text-sm text-beige"
+                          >Noufal Arysha</span
+                        >
+                        <span
+                          class="bg-teal/20 text-teal text-[10px] font-mono px-2 py-0.5 rounded-full font-bold"
+                          >PINNED</span
+                        >
+                      </div>
+                      <p class="text-xs text-skyblue mt-0.5">
+                        Terima kasih sudah mampir di portofolio saya!
+                      </p>
+                    </div>
+                  </div>
+                  <div class="flex items-center gap-1 text-skyblue text-xs">
+                    <svg
+                      class="w-4 h-4 text-teal"
+                      fill="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+                      />
+                    </svg>
+                    <span>12</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Copyright & Lokasi Bawah -->
+          <div
+            class="mt-20 pt-8 border-t border-skyblue/10 text-center md:text-left flex flex-col md:flex-row justify-between items-center text-skyblue text-sm font-mono gap-4"
+          >
+            <p class="font-bold tracking-wider">NOUFAL ARYSHA &copy; 2026</p>
+            <p class="flex items-center gap-2">
+              <svg
+                class="w-4 h-4"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.243-4.243a8 8 0 1111.314 0z"
+                ></path>
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                ></path>
+              </svg>
+              Padang, West Sumatra, Indonesia
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= JAVASCRIPT UNTUK FUNGSI INTERAKTIF ================= -->
+      <script>
+        // 1. Fungsi Mengarahkan Form ke WhatsApp Anda
+        function sendToWhatsApp(event) {
+          event.preventDefault(); // Mencegah reload halaman
+
+          const name = document.getElementById("waName").value;
+          const message = document.getElementById("waMessage").value;
+
+          // Nomor WhatsApp tujuan (Format internasional tanpa simbol +)
+          const phoneNumber = "6285760185595";
+
+          // Format teks pesan yang akan dikirim
+          const text = `Halo, nama saya *${name}*.\n\n${message}`;
+          const encodedText = encodeURIComponent(text);
+
+          // Membuka WhatsApp Web / Aplikasi
+          const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedText}`;
+          window.open(whatsappURL, "_blank");
+        }
+
+        // 2. Fungsi Menambahkan Komentar secara Instan (Live Preview)
+        function postComment(event) {
+          event.preventDefault();
+
+          const nameInput = document.getElementById("commentName");
+          const textInput = document.getElementById("commentText");
+          const commentsList = document.getElementById("commentsList");
+
+          const name = nameInput.value;
+          const text = textInput.value;
+          const initial = name.charAt(0).toUpperCase();
+
+          // Membuat elemen HTML untuk komentar baru
+          const newCommentHTML = `
+      <div class="bg-white/5 border border-white/10 backdrop-blur-md p-5 rounded-2xl flex items-center justify-between animate-fade-in">
+        <div class="flex items-center gap-4">
+          <div class="w-10 h-10 rounded-full bg-teal text-navy font-bold flex items-center justify-center flex-shrink-0">${initial}</div>
+          <div>
+            <span class="font-bold text-sm text-beige block">${name}</span>
+            <p class="text-xs text-skyblue mt-0.5">${text}</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-1 text-skyblue text-xs">
+          <svg class="w-4 h-4 text-teal" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+          <span>1</span>
+        </div>
+      </div>
+    `;
+
+          // Masukkan komentar baru di atas daftar komentar
+          commentsList.insertAdjacentHTML("afterbegin", newCommentHTML);
+
+          // Kosongkan form input kembali
+          nameInput.value = "";
+          textInput.value =
+            "Halo, Saya Tertarik dengan portofolio anda, apakah anda ada waktu luang?"; // Reset default opsional
+        }
+      </script>
+    </div>
+
+    <!-- GSAP LOGIC (Tanpa Plugin Berbayar) -->
+    <script>
+      // Daftarkan ScrollTrigger (Gratis & Aman)
+      gsap.registerPlugin(ScrollTrigger);
+
+      // --- 1. SPLASH SCREEN ANIMATION ---
+      const splashTl = gsap.timeline();
+
+      // Animasi teks profesi bergulir ke atas
+      splashTl
+        .to("#splash-professions", {
+          y: "-25%",
+          duration: 0.8,
+          delay: 0.5,
+          ease: "power3.inOut",
+        })
+        .to("#splash-professions", {
+          y: "-50%",
+          duration: 0.8,
+          delay: 0.5,
+          ease: "power3.inOut",
+        })
+        .to("#splash-professions", {
+          y: "-75%",
+          duration: 0.8,
+          delay: 0.5,
+          ease: "power3.inOut",
+        });
+
+      // Menghilangkan layar splash
+      splashTl.to("#splash-overlay", {
+        y: "-100%", // Bergerak ke atas agar lebih dinamis
+        duration: 1,
+        ease: "power4.inOut",
+        onComplete: () => {
+          document.getElementById("splash-overlay").style.display = "none";
+          runHeroAnimation(); // Jalankan animasi utama
+        },
+      });
+
+      // --- 2. HERO ANIMATION ---
+      function runHeroAnimation() {
+        // Tampilkan main content
+        gsap.set("#main-content", { opacity: 1 });
+
+        const heroTl = gsap.timeline();
+
+        // Animasi gambar masuk
+        heroTl
+          .from(".anim-hero-photo", {
+            scale: 0.8,
+            opacity: 0,
+            rotation: -5,
+            duration: 1.2,
+            ease: "power3.out",
+          })
+          // Animasi teks baris per baris (menggantikan fungsi SplitText)
+          .from(
+            ".anim-hero-text",
+            {
+              y: "100%",
+              opacity: 0,
+              duration: 0.8,
+              stagger: 0.15,
+              ease: "power3.out",
+            },
+            "-=0.8",
+          )
+          // Animasi sisa elemen
+          .from(
+            ".anim-hero-item",
+            {
+              y: 20,
+              opacity: 0,
+              duration: 0.8,
+              stagger: 0.1,
+              ease: "power3.out",
+            },
+            "-=0.4",
+          );
+      }
+
+      // --- 3. SCROLL ANIMATIONS ---
+
+      // A. Perubahan warna Navbar saat melewati Hero Section
+      ScrollTrigger.create({
+        trigger: "#about",
+        start: "top 10%",
+        onEnter: () =>
+          gsap.to("header", {
+            backgroundColor: "rgba(47, 65, 86, 0.95)",
+            borderBottomColor: "rgba(200,217,230,0.1)",
+          }),
+        onLeaveBack: () =>
+          gsap.to("header", {
+            backgroundColor: "rgba(245, 239, 235, 0.9)",
+            borderBottomColor: "rgba(47, 65, 86, 0.1)",
+          }),
+      });
+      ScrollTrigger.create({
+        trigger: "#about",
+        start: "top 10%",
+        onEnter: () => gsap.to(".nav-logo, .nav-links a", { color: "#F5EFEB" }),
+        onLeaveBack: () =>
+          gsap.to(".nav-logo, .nav-links a", { color: "#2F4156" }),
+      });
+
+      // B. Animasi About Section
+      gsap.from(".reveal-left", {
+        x: -100,
+        opacity: 0,
+        duration: 1,
+        scrollTrigger: {
+          trigger: "#about",
+          start: "top 70%",
+          toggleActions: "play none none none",
+        },
+      });
+      gsap.from(".reveal-right > *", {
+        x: 50,
+        opacity: 0,
+        duration: 0.8,
+        stagger: 0.1,
+        scrollTrigger: {
+          trigger: "#about",
+          start: "top 70%",
+          toggleActions: "play none none none",
+        },
+      });
+
+      // Efek Morphing (berubah bentuk) pada foto saat di-scroll
+      gsap.to(".portrait-morph-about", {
+        clipPath:
+          "polygon(50% 0%, 90% 10%, 100% 50%, 90% 90%, 50% 100%, 10% 90%, 0% 50%, 10% 10%)",
+        scrollTrigger: {
+          trigger: "#about",
+          start: "top 80%",
+          end: "bottom 20%",
+          scrub: true,
+        },
+      });
+
+      // C. Animasi Projects Section
+      gsap.from(".reveal-up > *", {
+        y: 30,
+        opacity: 0,
+        duration: 0.8,
+        stagger: 0.1,
+        scrollTrigger: {
+          trigger: "#projects",
+          start: "top 75%",
+          toggleActions: "play none none none",
+        },
+      });
+
+      // Animasi Grid Kartu Proyek
+      gsap.from(".project-card", {
+        y: 50,
+        opacity: 0,
+        duration: 0.8,
+        stagger: 0.2,
+        scrollTrigger: {
+          trigger: ".project-card",
+          start: "top 85%",
+          toggleActions: "play none none none",
+        },
+      });
+    </script>
+  </body>
+</html>
