@@ -1228,288 +1228,294 @@
         }
       </script>
 
-      <!-- ================= CONTACT & FOOTER SECTION (Navy) ================= -->
-      <section
-        id="contact"
-        class="py-24 bg-navy text-beige relative z-10 border-t border-skyblue/10"
-      >
-        <div class="max-w-7xl mx-auto px-6 md:px-12">
-          <!-- Header Section -->
-          <div class="mb-16 space-y-3">
-            <span
-              class="text-teal font-mono text-sm tracking-widest uppercase font-bold"
-              >Get In Touch</span
-            >
-            <h2 class="text-4xl md:text-6xl font-black tracking-tight">
-              Let's Connect & Collaborate.
-            </h2>
-          </div>
-
-          <!-- GRID UTAMA: 2 KOLOM (Kiri: Form WhatsApp & Sosmed, Kanan: Guestbook Comments) -->
-          <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-            <!-- ================= KOLOM KIRI: FORM WHATSAPP & SOCIAL MEDIA ================= -->
-            <div class="flex flex-col space-y-8">
-              <!-- Form Send Message (Terhubung ke WhatsApp & Email) -->
-              <div
-                class="bg-white/5 border border-white/10 backdrop-blur-md p-8 rounded-[32px] shadow-xl space-y-6"
-              >
-                <h3 class="text-2xl font-bold text-beige">
-                  Send Message via WhatsApp
-                </h3>
-
-                <form
-                  id="whatsappForm"
-                  onsubmit="sendToWhatsApp(event)"
-                  class="space-y-4"
-                >
-                  <div>
-                    <label
-                      class="block text-xs font-mono uppercase tracking-widest text-skyblue mb-2"
-                      >Your Name</label
-                    >
-                    <input
-                      type="text"
-                      id="waName"
-                      placeholder="Nama Anda"
-                      required
-                      class="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-4 text-beige placeholder-skyblue/40 focus:outline-none focus:border-teal transition-colors"
-                    />
-                  </div>
-
-                  <div>
-                    <label
-                      class="block text-xs font-mono uppercase tracking-widest text-skyblue mb-2"
-                      >Your Message</label
-                    >
-                    <textarea
-                      id="waMessage"
-                      rows="4"
-                      placeholder="Tuliskan pesan..."
-                      class="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-4 text-beige placeholder-skyblue/40 focus:outline-none focus:border-teal transition-colors resize-none"
-                    >
-Halo, Saya Tertarik dengan portofolio anda, apakah anda ada waktu luang?</textarea
-                    >
-                  </div>
-
-                  <button
-                    type="submit"
-                    class="w-full py-4 bg-teal text-navy rounded-2xl font-bold text-base hover:bg-white transition-all shadow-lg shadow-teal/20 flex items-center justify-center gap-2"
-                  >
-                    <svg
-                      class="w-5 h-5"
-                      fill="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"
-                      />
-                    </svg>
-                    Send to WhatsApp (+62 857-6018-5595)
-                  </button>
-                </form>
-
-                <!-- Alternatif Kirim Email Langsung -->
-                <div class="pt-4 border-t border-white/10 text-center">
-                  <a
-                    href="mailto:noufalarysharmdn@gmail.com"
-                    class="text-xs font-mono text-skyblue hover:text-teal transition-colors"
-                  >
-                    Atau kirim email langsung ke:
-                    <span class="underline font-bold"
-                      >noufalarysharmdn@gmail.com</span
-                    >
-                  </a>
-                </div>
-              </div>
-
-              <!-- Connect With Me (Social Media Grid) -->
-              <div class="space-y-4">
-                <h4
-                  class="text-sm font-mono uppercase tracking-widest text-skyblue font-bold"
-                >
-                  Connect With Me
-                </h4>
-
-                <div class="grid grid-cols-2 gap-4">
-                  <!-- LinkedIn -->
-                  <a
-                    href="#"
-                    target="_blank"
-                    class="bg-white/5 border border-white/10 p-4 rounded-2xl flex items-center gap-3 hover:bg-white/10 hover:border-teal/50 transition-all group"
-                  >
-                    <span
-                      class="p-2 bg-white/5 rounded-xl text-teal group-hover:scale-110 transition-transform"
-                    >
-                      <svg
-                        class="w-5 h-5"
-                        fill="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"
-                        />
-                      </svg>
-                    </span>
-                    <div class="flex flex-col">
-                      <span class="font-bold text-sm text-beige">LinkedIn</span>
-                      <span class="text-xs text-skyblue">@noufal-arysha</span>
-                    </div>
-                  </a>
-
-                  <!-- GitHub -->
-                  <a
-                    href="https://github.com/kiboboy"
-                    target="_blank"
-                    class="bg-white/5 border border-white/10 p-4 rounded-2xl flex items-center gap-3 hover:bg-white/10 hover:border-teal/50 transition-all group"
-                  >
-                    <span
-                      class="p-2 bg-white/5 rounded-xl text-teal group-hover:scale-110 transition-transform"
-                    >
-                      <svg
-                        class="w-5 h-5"
-                        fill="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          fill-rule="evenodd"
-                          clip-rule="evenodd"
-                          d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.379.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.161 22 16.418 22 12c0-5.523-4.477-10-10-10z"
-                        />
-                      </svg>
-                    </span>
-                    <div class="flex flex-col">
-                      <span class="font-bold text-sm text-beige">Github</span>
-                      <span class="text-xs text-skyblue">@kiboboy</span>
-                    </div>
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <!-- ================= KOLOM KANAN: GUESTBOOK & COMMENTS ================= -->
-            <div class="flex flex-col space-y-6">
-              <!-- Box Input Komentar Interaktif -->
-              <div
-                class="bg-white/5 border border-white/10 backdrop-blur-md p-8 rounded-[32px] shadow-xl space-y-6"
-              >
-                <h3 class="text-2xl font-bold text-beige">Leave a Comment</h3>
-
-                <form
-                  id="commentForm"
-                  onsubmit="postComment(event)"
-                  class="space-y-4"
-                >
-                  <div>
-                    <label
-                      class="block text-xs font-mono uppercase tracking-widest text-skyblue mb-2"
-                      >Your Name</label
-                    >
-                    <input
-                      type="text"
-                      id="commentName"
-                      placeholder="Nama Anda"
-                      required
-                      class="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-4 text-beige placeholder-skyblue/40 focus:outline-none focus:border-teal transition-colors"
-                    />
-                  </div>
-
-                  <div>
-                    <label
-                      class="block text-xs font-mono uppercase tracking-widest text-skyblue mb-2"
-                      >Your Comment</label
-                    >
-                    <textarea
-                      id="commentText"
-                      rows="3"
-                      placeholder="Tinggalkan pesan atau kesan..."
-                      required
-                      class="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-4 text-beige placeholder-skyblue/40 focus:outline-none focus:border-teal transition-colors resize-none"
-                    ></textarea>
-                  </div>
-
-                  <button
-                    type="submit"
-                    class="w-full py-4 bg-white/10 text-beige rounded-2xl font-bold text-base hover:bg-teal hover:text-navy transition-all shadow-md"
-                  >
-                    Post Comment
-                  </button>
-                </form>
-              </div>
-
-              <!-- Daftar Komentar (Akan bertambah secara dinamis saat di-submit) -->
-              <div id="commentsList" class="space-y-4">
-                <!-- Komentar 1 (Pinned) -->
-                <div
-                  class="bg-white/5 border border-teal/30 backdrop-blur-md p-5 rounded-2xl flex items-center justify-between"
-                >
-                  <div class="flex items-center gap-4">
-                    <div
-                      class="w-10 h-10 rounded-full bg-teal text-navy font-bold flex items-center justify-center flex-shrink-0"
-                    >
-                      N
-                    </div>
-                    <div>
-                      <div class="flex items-center gap-2">
-                        <span class="font-bold text-sm text-beige"
-                          >Noufal Arysha</span
-                        >
-                        <span
-                          class="bg-teal/20 text-teal text-[10px] font-mono px-2 py-0.5 rounded-full font-bold"
-                          >PINNED</span
-                        >
-                      </div>
-                      <p class="text-xs text-skyblue mt-0.5">
-                        Terima kasih sudah mampir di portofolio saya!
-                      </p>
-                    </div>
-                  </div>
-                  <div class="flex items-center gap-1 text-skyblue text-xs">
-                    <svg
-                      class="w-4 h-4 text-teal"
-                      fill="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
-                      />
-                    </svg>
-                    <span>12</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Copyright & Lokasi Bawah -->
-          <div
-            class="mt-20 pt-8 border-t border-skyblue/10 text-center md:text-left flex flex-col md:flex-row justify-between items-center text-skyblue text-sm font-mono gap-4"
-          >
-            <p class="font-bold tracking-wider">NOUFAL ARYSHA &copy; 2026</p>
-            <p class="flex items-center gap-2">
-              <svg
-                class="w-4 h-4"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.243-4.243a8 8 0 1111.314 0z"
-                ></path>
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-                ></path>
-              </svg>
-              Padang, West Sumatra, Indonesia
-            </p>
-          </div>
+      <!-- ================= INTERNSHIP EXPERIENCE SECTION ================= -->
+    <section id="experience" class="py-24 bg-navy text-beige relative z-10 border-t border-skyblue/10">
+      <div class="max-w-7xl mx-auto px-6 md:px-12">
+        
+        <!-- Header Section -->
+        <div class="mb-16 space-y-3">
+          <span class="text-teal font-mono text-sm tracking-widest uppercase font-bold bg-white/10 px-3 py-1 rounded-full inline-block">Career Journey</span>
+          <h2 class="text-4xl md:text-6xl font-black tracking-tight text-beige">Pengalaman Magang.</h2>
+          <p class="text-skyblue text-base md:text-lg font-medium">Rekam jejak kontribusi profesional saya di instansi pemerintahan.</p>
         </div>
-      </section>
+
+        <!-- Layout Utama: Kiri (Slider Foto), Kanan (Detail Pengalaman) -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center bg-white/5 border border-white/10 backdrop-blur-md p-6 md:p-12 rounded-[36px] shadow-2xl">
+          
+          <!-- ================= KIRI: SLIDE FOTO (CAROUSEL) ================= -->
+          <div class="lg:col-span-6 flex flex-col space-y-4">
+            
+            <!-- Container Slider -->
+            <div class="relative w-full h-[300px] md:h-[400px] rounded-[24px] overflow-hidden bg-navy/50 shadow-inner group border border-white/10">
+              
+              <!-- Slide Images (Ganti src dengan foto dokumentasi magang Anda) -->
+              <div class="slider-track flex transition-transform duration-500 ease-in-out h-full w-full">
+                <div class="min-w-full h-full flex-shrink-0">
+                  <img src="assets/img/magang/magang (1).jpeg" alt="Dokumentasi Magang 1" class="w-full h-full object-cover">
+                </div>
+                <div class="min-w-full h-full flex-shrink-0">
+                  <img src="assets/img/magang/magang (2).jpeg" alt="Dokumentasi Magang 2" class="w-full h-full object-cover">
+                </div>
+                <div class="min-w-full h-full flex-shrink-0">
+                  <img src="assets/img/magang/magang (3).jpeg" alt="Dokumentasi Magang 3" class="w-full h-full object-cover">
+                </div>
+                <div class="min-w-full h-full flex-shrink-0">
+                  <img src="assets/img/magang/magang (4).jpeg" alt="Dokumentasi Magang 4" class="w-full h-full object-cover">
+                </div>
+                <div class="min-w-full h-full flex-shrink-0">
+                  <img src="assets/img/magang/magang (5).jpeg" alt="Dokumentasi Magang 5" class="w-full h-full object-cover">
+                </div>
+                <div class="min-w-full h-full flex-shrink-0">
+                  <img src="assets/img/magang/magang (6).jpeg" alt="Dokumentasi Magang 6" class="w-full h-full object-cover">
+                </div>
+              </div>
+
+              <!-- Tombol Navigasi Slider (Prev / Next) -->
+              <button onclick="prevSlide()" class="absolute left-4 top-1/2 -translate-y-1/2 bg-navy/80 hover:bg-teal hover:text-navy text-white p-3 rounded-full backdrop-blur-sm transition-all opacity-0 group-hover:opacity-100 shadow-lg">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"></path></svg>
+              </button>
+              <button onclick="nextSlide()" class="absolute right-4 top-1/2 -translate-y-1/2 bg-navy/80 hover:bg-teal hover:text-navy text-white p-3 rounded-full backdrop-blur-sm transition-all opacity-0 group-hover:opacity-100 shadow-lg">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"></path></svg>
+              </button>
+
+              <!-- Indikator Titik (Dots) -->
+              <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2 bg-navy/60 px-3 py-1.5 rounded-full backdrop-blur-sm">
+                <span class="dot w-2 h-2 rounded-full bg-white transition-all cursor-pointer" onclick="currentSlide(0)"></span>
+                <span class="dot w-2 h-2 rounded-full bg-white/50 transition-all cursor-pointer" onclick="currentSlide(1)"></span>
+                <span class="dot w-2 h-2 rounded-full bg-white/50 transition-all cursor-pointer" onclick="currentSlide(2)"></span>
+              </div>
+            </div>
+            
+            <p class="text-xs text-center font-mono text-skyblue">Geser atau gunakan tombol panah untuk melihat dokumentasi kegiatan magang.</p>
+          </div>
+
+          <!-- ================= KANAN: DESKRIPSI & TUGAS MAGANG ================= -->
+          <div class="lg:col-span-6 flex flex-col space-y-6">
+            
+            <!-- Posisi & Instansi -->
+            <div>
+              <span class="text-xs font-bold font-mono text-teal bg-white/10 px-3 py-1 rounded-full">Januari 2024 – Februari 2024</span>
+              <h3 class="text-3xl font-black text-beige mt-3">Front-End Developer</h3>
+              <p class="text-skyblue font-bold text-sm">BBPSDMP Kominfo Medan · Medan, Sumatera Utara</p>
+            </div>
+
+            <!-- Poin-Poin Deskripsi Tugas -->
+            <ul class="space-y-4 text-beige/80 text-sm md:text-base font-medium">
+              <li class="flex items-start gap-3">
+                <span class="w-2 h-2 rounded-full bg-teal mt-2 flex-shrink-0"></span>
+                <span>Melakukan analisis kebutuhan sistem untuk pengembangan aplikasi pengelolaan kegiatan pelatihan berbasis web.</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="w-2 h-2 rounded-full bg-teal mt-2 flex-shrink-0"></span>
+                <span>Berkontribusi dalam perancangan antarmuka serta pengembangan aplikasi <strong>KomPlan</strong> menggunakan framework Laravel untuk mengelola jadwal, honor, surat tugas, dan laporan kegiatan pelatihan.</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="w-2 h-2 rounded-full bg-teal mt-2 flex-shrink-0"></span>
+                <span>Memberikan dukungan teknis kepada peserta pelatihan, termasuk membantu proses pendaftaran serta memastikan kelancaran penggunaan sistem selama kegiatan berlangsung.</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="w-2 h-2 rounded-full bg-teal mt-2 flex-shrink-0"></span>
+                <span>Melakukan <i>maintenance</i> dasar komputer dan jaringan (LAN & Wi-Fi) untuk mendukung kelancaran operasional harian instansi.</span>
+              </li>
+            </ul>
+
+            <!-- Badge Tech Stack yang Digunakan Saat Magang -->
+            <div class="pt-4 border-t border-white/10 flex flex-wrap gap-2">
+              <span class="text-xs font-mono font-bold px-3 py-1.5 rounded-full bg-white/10 text-teal">Laravel</span>
+              <span class="text-xs font-mono font-bold px-3 py-1.5 rounded-full bg-white/10 text-teal">PHP</span>
+              <span class="text-xs font-mono font-bold px-3 py-1.5 rounded-full bg-white/10 text-teal">MySQL</span>
+              <span class="text-xs font-mono font-bold px-3 py-1.5 rounded-full bg-white/10 text-teal">Network Maintenance</span>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================= JAVASCRIPT UNTUK IMAGE SLIDER ================= -->
+    <script>
+      let slideIndex = 0;
+      const slides = document.querySelectorAll('.slider-track > div');
+      const dots = document.querySelectorAll('.dot');
+
+      function showSlide(index) {
+        if (index >= slides.length) slideIndex = 0;
+        if (index < 0) slideIndex = slides.length - 1;
+        
+        document.querySelector('.slider-track').style.transform = `translateX(-${slideIndex * 100}%)`;
+        
+        dots.forEach((dot, idx) => {
+          if (idx === slideIndex) {
+            dot.classList.remove('bg-white/50');
+            dot.classList.add('bg-white');
+          } else {
+            dot.classList.remove('bg-white');
+            dot.classList.add('bg-white/50');
+          }
+        });
+      }
+
+      function nextSlide() {
+        slideIndex++;
+        showSlide(slideIndex);
+      }
+
+      function prevSlide() {
+        slideIndex--;
+        showSlide(slideIndex);
+      }
+
+      function currentSlide(index) {
+        slideIndex = index;
+        showSlide(slideIndex);
+      }
+
+      setInterval(() => {
+        slideIndex++;
+        showSlide(slideIndex);
+      }, 5000);
+    </script>
+
+      <!-- ================= CONTACT & FOOTER SECTION (Navy) ================= -->
+      <!-- ================= CONTACT & FOOTER SECTION (Inverted: White BG, Navy Inside) ================= -->
+    <section id="contact" class="py-24 bg-white text-navy relative z-10 border-t border-navy/10">
+      <div class="max-w-7xl mx-auto px-6 md:px-12">
+        
+        <!-- Header Section -->
+        <div class="mb-16 space-y-3">
+          <span class="text-teal font-mono text-sm tracking-widest uppercase font-bold bg-navy px-3 py-1 rounded-full inline-block">Get In Touch</span>
+          <h2 class="text-4xl md:text-6xl font-black tracking-tight text-navy">Let's Connect & Collaborate.</h2>
+        </div>
+
+        <!-- GRID UTAMA: 2 KOLOM (Kiri: Form WhatsApp & Sosmed, Kanan: Guestbook Comments) -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+          
+          <!-- ================= KOLOM KIRI: FORM WHATSAPP & SOCIAL MEDIA ================= -->
+          <div class="flex flex-col space-y-8">
+            
+            <!-- Form Send Message (Terhubung ke WhatsApp & Email) -->
+            <div class="bg-navy text-beige p-8 rounded-[32px] shadow-2xl space-y-6">
+              <h3 class="text-2xl font-bold text-beige">Send Message via WhatsApp</h3>
+              
+              <form id="whatsappForm" onsubmit="sendToWhatsApp(event)" class="space-y-4">
+                <div>
+                  <label class="block text-xs font-mono uppercase tracking-widest text-skyblue mb-2">Your Name</label>
+                  <input type="text" id="waName" placeholder="Nama Anda" required class="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-4 text-beige placeholder-skyblue/40 focus:outline-none focus:border-teal transition-colors">
+                </div>
+
+                <div>
+                  <label class="block text-xs font-mono uppercase tracking-widest text-skyblue mb-2">Your Message</label>
+                  <textarea id="waMessage" rows="4" placeholder="Tuliskan pesan..." class="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-4 text-beige placeholder-skyblue/40 focus:outline-none focus:border-teal transition-colors resize-none">Halo, Saya Tertarik dengan portofolio anda, apakah anda ada waktu luang?</textarea>
+                </div>
+
+                <button type="submit" class="w-full py-4 bg-teal text-navy rounded-2xl font-bold text-base hover:bg-white transition-all shadow-lg shadow-teal/20 flex items-center justify-center gap-2">
+                  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+                  Send to WhatsApp (+62 857-6018-5595)
+                </button>
+              </form>
+
+              <!-- Alternatif Kirim Email Langsung -->
+              <div class="pt-4 border-t border-white/10 text-center">
+                <a href="mailto:noufalarysharmdn@gmail.com" class="text-xs font-mono text-skyblue hover:text-teal transition-colors">
+                  Atau kirim email langsung ke: <span class="underline font-bold">noufalarysharmdn@gmail.com</span>
+                </a>
+              </div>
+            </div>
+
+            <!-- Connect With Me (Social Media Grid) -->
+            <div class="space-y-4">
+              <h4 class="text-sm font-mono uppercase tracking-widest text-navy/60 font-bold">Connect With Me</h4>
+              
+              <div class="grid grid-cols-2 gap-4">
+                <!-- LinkedIn -->
+                <a href="#" target="_blank" class="bg-navy/5 border border-navy/10 p-4 rounded-2xl flex items-center gap-3 hover:bg-navy/10 hover:border-teal transition-all group">
+                  <span class="p-2 bg-navy/5 rounded-xl text-navy group-hover:scale-110 transition-transform">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                  </span>
+                  <div class="flex flex-col">
+                    <span class="font-bold text-sm text-navy">LinkedIn</span>
+                    <span class="text-xs text-navy/60">@noufal-arysha</span>
+                  </div>
+                </a>
+
+                <!-- GitHub -->
+                <a href="https://github.com/kiboboy" target="_blank" class="bg-navy/5 border border-navy/10 p-4 rounded-2xl flex items-center gap-3 hover:bg-navy/10 hover:border-teal transition-all group">
+                  <span class="p-2 bg-navy/5 rounded-xl text-navy group-hover:scale-110 transition-transform">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.379.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.161 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                  </span>
+                  <div class="flex flex-col">
+                    <span class="font-bold text-sm text-navy">Github</span>
+                    <span class="text-xs text-navy/60">@kiboboy</span>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- ================= KOLOM KANAN: GUESTBOOK & COMMENTS ================= -->
+          <div class="flex flex-col space-y-6">
+            
+            <!-- Box Input Komentar Interaktif -->
+            <div class="bg-navy text-beige p-8 rounded-[32px] shadow-2xl space-y-6">
+              <h3 class="text-2xl font-bold text-beige">Leave a Comment</h3>
+              
+              <form id="commentForm" onsubmit="postComment(event)" class="space-y-4">
+                <div>
+                  <label class="block text-xs font-mono uppercase tracking-widest text-skyblue mb-2">Your Name</label>
+                  <input type="text" id="commentName" placeholder="Nama Anda" required class="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-4 text-beige placeholder-skyblue/40 focus:outline-none focus:border-teal transition-colors">
+                </div>
+
+                <div>
+                  <label class="block text-xs font-mono uppercase tracking-widest text-skyblue mb-2">Your Comment</label>
+                  <textarea id="commentText" rows="3" placeholder="Tinggalkan pesan atau kesan..." required class="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-4 text-beige placeholder-skyblue/40 focus:outline-none focus:border-teal transition-colors resize-none"></textarea>
+                </div>
+
+                <button type="submit" class="w-full py-4 bg-white/10 text-beige rounded-2xl font-bold text-base hover:bg-teal hover:text-navy transition-all shadow-md">
+                  Post Comment
+                </button>
+              </form>
+            </div>
+
+            <!-- Daftar Komentar (Akan bertambah secara dinamis saat di-submit) -->
+            <div id="commentsList" class="space-y-4">
+              
+              <!-- Komentar 1 (Pinned) -->
+              <div class="bg-navy/5 border border-navy/10 p-5 rounded-2xl flex items-center justify-between">
+                <div class="flex items-center gap-4">
+                  <div class="w-10 h-10 rounded-full bg-teal text-navy font-bold flex items-center justify-center flex-shrink-0">N</div>
+                  <div>
+                    <div class="flex items-center gap-2">
+                      <span class="font-bold text-sm text-navy">Noufal Arysha</span>
+                      <span class="bg-teal/20 text-teal text-[10px] font-mono px-2 py-0.5 rounded-full font-bold">PINNED</span>
+                    </div>
+                    <p class="text-xs text-navy/70 mt-0.5">Terima kasih sudah mampir di portofolio saya!</p>
+                  </div>
+                </div>
+                <div class="flex items-center gap-1 text-navy/60 text-xs">
+                  <svg class="w-4 h-4 text-teal" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                  <span>12</span>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- Copyright & Lokasi Bawah -->
+        <div class="mt-20 pt-8 border-t border-navy/10 text-center md:text-left flex flex-col md:flex-row justify-between items-center text-navy/60 text-sm font-mono gap-4">
+          <p class="font-bold tracking-wider">NOUFAL ARYSHA &copy; 2026</p>
+          <p class="flex items-center gap-2">
+             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.243-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+             Padang, West Sumatra, Indonesia
+          </p>
+        </div>
+
+      </div>
+    </section>
 
       <!-- ================= JAVASCRIPT UNTUK FUNGSI INTERAKTIF ================= -->
       <script>
